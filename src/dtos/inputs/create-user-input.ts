@@ -3,10 +3,10 @@ import { UserRoleType } from "../../types/role-user-type"
 
 @InputType()
 export class CreateUserInput {
-    @Field(() => String!)
+    @Field()
     name: string
 
-    @Field(() => String!)
+    @Field()
     email: string
 
     @Field(() => UserRoleType!)

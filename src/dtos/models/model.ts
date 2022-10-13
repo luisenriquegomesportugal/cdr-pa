@@ -1,5 +1,5 @@
 import { Field, ID, ObjectType } from "type-graphql"
-import { serverTimestamp } from "firebase/database"
+import { DateScalar } from "../../types/date-scalar-type"
 
 @ObjectType({ isAbstract: true })
 export abstract class Model {
@@ -10,17 +10,17 @@ export abstract class Model {
             this.id = id
         }
         else {
-            this.createdAt = serverTimestamp()
-            this.updatedAt = serverTimestamp()
+            this.createdAt = new Date()
+            this.updatedAt = new Date()
         }
     }
 
     @Field(() => ID, { nullable: true })
     id?: string
 
-    @Field(() => String)
+    @Field(() => DateScalar)
     private createdAt: object
 
-    @Field(() => String, { nullable: true })
+    @Field(() => DateScalar, { nullable: true })
     private updatedAt?: object
 }

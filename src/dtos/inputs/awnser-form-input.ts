@@ -2,12 +2,12 @@ import { Field, InputType } from "type-graphql"
 
 @InputType()
 export class AwnserFormInput {
-    @Field(() => String!)
+    @Field()
     producerId: string
     
-    @Field(() => String!)
+    @Field()
     formId: string
 
-    @Field(() => [String]!)
+    @Field()
     awnsers: string[]
 }

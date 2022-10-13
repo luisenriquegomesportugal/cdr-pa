@@ -4,10 +4,10 @@ import { Model } from "./model"
 
 @ObjectType()
 export class UserModel extends Model {
-    @Field(() => String!)
+    @Field()
     name: string
 
-    @Field(() => String!)
+    @Field()
     email: string
     
     @Field(() => UserRoleType!)

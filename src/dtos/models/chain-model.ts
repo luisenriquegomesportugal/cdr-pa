@@ -3,6 +3,6 @@ import { Model } from "./model"
 
 @ObjectType()
 export class ChainModel extends Model {
-    @Field(() => String!)
+    @Field()
     name: string
 }

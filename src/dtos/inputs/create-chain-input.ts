@@ -2,6 +2,6 @@ import { Field, InputType } from "type-graphql"
 
 @InputType()
 export class CreateChainInput {
-    @Field(() => String!)
+    @Field()
     name: string
 }

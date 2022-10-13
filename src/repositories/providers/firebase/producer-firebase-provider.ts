@@ -1,4 +1,4 @@
-import { Database, DatabaseReference, equalTo, get, getDatabase, orderByChild, push, query, ref, serverTimestamp, update } from "firebase/database"
+import { Database, DatabaseReference, equalTo, get, getDatabase, orderByChild, push, query, ref, update } from "firebase/database"
 import { firebase } from "../../../configs/firebase"
 import { AwnserFormInput } from "../../../dtos/inputs/awnser-form-input"
 import { CreateProducerInput } from "../../../dtos/inputs/create-producer-input"
@@ -43,7 +43,7 @@ export class ProducerFirebaseProvider implements ProducerRepository {
         let paths = {
             [`/${this.producersRef.key}/${producerId}/formsAwnsered/${formId}`]: awnsers,
             [`/${this.producersRef.key}/${producerId}`]: {
-                updatedAt: serverTimestamp()
+                updatedAt: new Date()
             }
         }
 

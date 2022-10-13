@@ -3,6 +3,6 @@ import { Model } from "./model"
 
 @ObjectType()
 export class PoleModel extends Model {
-    @Field(() => String!)
+    @Field()
     name: string
 }

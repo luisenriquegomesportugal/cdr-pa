@@ -3,9 +3,9 @@ import { Model } from "./model"
 
 @ObjectType()
 export class FormModel extends Model {
-    @Field(() => String!)
+    @Field()
     name: string
 
-    @Field(() => [String!]!)
+    @Field()
     questions: string[]
 }

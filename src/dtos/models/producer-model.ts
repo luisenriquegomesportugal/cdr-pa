@@ -1,13 +1,13 @@
 import { Field, ObjectType } from "type-graphql"
-import { ObjectScalar } from "../../types/forms-awnsered-type"
+import { ObjectScalar } from "../../types/object-scalar-type"
 import { Model } from "./model"
 
 @ObjectType()
 export class ProducerModel extends Model {
-    @Field(() => String!)
+    @Field()
     name: string
 
-    @Field(() => String, {nullable: true})
+    @Field({nullable: true})
     description?: string
 
     @Field(() => ObjectScalar, {nullable: true})

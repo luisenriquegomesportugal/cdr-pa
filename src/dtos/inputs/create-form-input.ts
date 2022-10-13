@@ -2,9 +2,9 @@ import { Field, InputType } from "type-graphql"
 
 @InputType()
 export class CreateFormInput {
-    @Field(() => String!)
+    @Field()
     name: string
 
-    @Field(() => [String!]!)
+    @Field()
     questions: string[]
 }

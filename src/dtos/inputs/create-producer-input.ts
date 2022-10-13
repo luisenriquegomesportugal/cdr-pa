@@ -2,18 +2,18 @@ import { Field, InputType } from "type-graphql"
 
 @InputType()
 export class CreateProducerInput {
-    @Field(() => String!)
+    @Field()
     name: string
 
-    @Field(() => String, {nullable: true})
+    @Field({nullable: true})
     description?: string
     
-    @Field(() => String!)
+    @Field()
     chainId: string
 
-    @Field(() => String!)
+    @Field()
     poleId: string
 
-    @Field(() => String!)
+    @Field()
     userId: string
 }

@@ -5,6 +5,6 @@ export class CreateFormInput {
     @Field()
     name: string
 
-    @Field()
+    @Field(() => [String!]!)
     questions: string[]
 }

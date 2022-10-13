@@ -6,6 +6,6 @@ export class FormModel extends Model {
     @Field()
     name: string
 
-    @Field()
+    @Field(() => [String!]!)
     questions: string[]
 }

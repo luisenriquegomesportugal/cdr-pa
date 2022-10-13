@@ -8,6 +8,6 @@ export class AwnserFormInput {
     @Field()
     formId: string
 
-    @Field()
+    @Field(() => [String!]!)
     awnsers: string[]
 }

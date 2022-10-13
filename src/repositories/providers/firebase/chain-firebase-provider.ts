@@ -1,5 +1,5 @@
-import { DatabaseReference, getDatabase, push, ref, get, child } from "firebase/database"
-import { firebase } from "../../../configs/firebase"
+import { DatabaseReference, push, ref, get, child } from "firebase/database"
+import { connect } from "../../../configs/firebase"
 import { CreateChainInput } from "../../../dtos/inputs/create-chain-input"
 import { ChainModel } from "../../../dtos/models/chain-model"
 import { ID } from "../../../types/id-type"
@@ -9,7 +9,7 @@ export class ChainFirebaseProvider implements ChainRepository {
     private chainDatabaseReference: DatabaseReference
 
     constructor() {
-        let database = getDatabase(firebase)
+        let database = connect()
         this.chainDatabaseReference = ref(database, 'chains')
     }
 

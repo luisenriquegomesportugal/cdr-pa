@@ -1,5 +1,5 @@
-import { firebase } from "../../../configs/firebase"
-import { getDatabase, ref, push, DatabaseReference, get, child } from "firebase/database"
+import { connect } from "../../../configs/firebase"
+import { ref, push, DatabaseReference, get, child } from "firebase/database"
 import { CreateUserInput } from "../../../dtos/inputs/create-user-input"
 import { UserRepository } from "../../user-repository"
 import { UserModel } from "../../../dtos/models/user-model"
@@ -9,7 +9,7 @@ export class UserFirebaseProvider implements UserRepository {
     private userDatabaseReference: DatabaseReference
 
     constructor() {
-        let database = getDatabase(firebase)
+        let database = connect()
         this.userDatabaseReference = ref(database, 'users')
     }
 

@@ -1,5 +1,5 @@
-import { Database, DatabaseReference, equalTo, get, getDatabase, orderByChild, push, query, ref, update } from "firebase/database"
-import { firebase } from "../../../configs/firebase"
+import { Database, DatabaseReference, equalTo, get, orderByChild, push, query, ref, update } from "firebase/database"
+import { connect } from "../../../configs/firebase"
 import { AwnserFormInput } from "../../../dtos/inputs/awnser-form-input"
 import { CreateProducerInput } from "../../../dtos/inputs/create-producer-input"
 import { ListProducerInput } from "../../../dtos/inputs/list-producer-input"
@@ -12,7 +12,7 @@ export class ProducerFirebaseProvider implements ProducerRepository {
     private producersRef: DatabaseReference
 
     constructor() {
-        this.database = getDatabase(firebase)
+        this.database = connect()
         this.producersRef = ref(this.database, 'producers')
     }
 

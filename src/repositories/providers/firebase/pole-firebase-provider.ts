@@ -1,5 +1,5 @@
-import { DatabaseReference, getDatabase, push, ref, get, child } from "firebase/database"
-import { firebase } from "../../../configs/firebase"
+import { DatabaseReference, push, ref, get, child } from "firebase/database"
+import { connect } from "../../../configs/firebase"
 import { CreatePoleInput } from "../../../dtos/inputs/create-pole-input"
 import { PoleModel } from "../../../dtos/models/pole-model"
 import { ID } from "../../../types/id-type"
@@ -9,7 +9,7 @@ export class PoleFirebaseProvider implements PoleRepository {
     private poleDatabaseReference: DatabaseReference
 
     constructor() {
-        let database = getDatabase(firebase)
+        let database = connect()
         this.poleDatabaseReference = ref(database, 'poles')
     }
 

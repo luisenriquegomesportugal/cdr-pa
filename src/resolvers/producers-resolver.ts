@@ -29,39 +29,39 @@ export class ProducersResolver {
     @Query(() => [ProducerModel!]!, {nullable: true})
     async listProducer(@Arg("data") data: ListProducerInput) {
         let createProducerUsecase = new ListProducerUsecase(this.producerFirebaseProvider)
-        return await createProducerUsecase.execute(data)
+        return createProducerUsecase.execute(data)
     }
 
     @Mutation(() => ID)
     async createProducer(@Arg("data") data: CreateProducerInput) {
         let createProducerUsecase = new CreateProducerUsecase(this.producerFirebaseProvider)
-        return await createProducerUsecase.execute(data)
+        return createProducerUsecase.execute(data)
     }
 
     @Mutation(() => Boolean)
     async saveAwnser(@Arg("data") data: AwnserFormInput) {
         let awnserProducerUsecase = new AwnserProducerUsecase(this.producerFirebaseProvider)
-        return await awnserProducerUsecase.execute(data);
+        return awnserProducerUsecase.execute(data);
     }
 
     @FieldResolver(() => PoleModel!)
     async pole(@Root() producer: ProducerModel) {
         let poleFirebaseProvider = new PoleFirebaseProvider()
         let getPoleByIdUsecase = new GetPoleByIdUsecase(poleFirebaseProvider)
-        return await getPoleByIdUsecase.execute(producer.poleId)
+        return getPoleByIdUsecase.execute(producer.poleId)
     }    
     
     @FieldResolver(() => ChainModel!)
     async chain(@Root() producer: ProducerModel) {
         let chainFirebaseProvider = new ChainFirebaseProvider()
         let getChainByIdUsecase = new GetChainByIdUsecase(chainFirebaseProvider)
-        return await getChainByIdUsecase.execute(producer.chainId)
+        return getChainByIdUsecase.execute(producer.chainId)
     }
 
     @FieldResolver(() => UserModel!)
     async user(@Root() producer: ProducerModel) {
         let userFirebaseProvider = new UserFirebaseProvider()
         let getUserByIdUsecase = new GetUserByIdUsecase(userFirebaseProvider)
-        return await getUserByIdUsecase.execute(producer.userId)
+        return getUserByIdUsecase.execute(producer.userId)
     }
 } 

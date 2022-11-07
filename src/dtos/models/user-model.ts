@@ -12,4 +12,7 @@ export class UserModel extends Model {
     
     @Field(() => UserRoleType!)
     role: UserRoleType
+
+    @Field()
+    token?: string
 }

@@ -18,13 +18,13 @@ export class ChainsResolver {
     async listChain(): Promise<ChainModel[]> {
         let listChainUsecase = new ListChainUsecase(this.chainFirebaseProvider)
 
-        return await listChainUsecase.execute()
+        return listChainUsecase.execute()
     }
 
     @Mutation(() => ID)
     async createChain(@Arg("data") data: CreateChainInput) {
         let createChainUsecase = new CreateChainUsecase(this.chainFirebaseProvider)
 
-        return await createChainUsecase.execute(data)
+        return createChainUsecase.execute(data)
     }
 } 

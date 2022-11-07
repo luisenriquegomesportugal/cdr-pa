@@ -18,13 +18,13 @@ export class FormsResolver {
     async listForm(): Promise<FormModel[]> {
         let listFormUsecase = new ListFormUsecase(this.formFirebaseProvider)
 
-        return await listFormUsecase.execute()
+        return listFormUsecase.execute()
     }
 
     @Mutation(() => ID)
     async createForm(@Arg("data") data: CreateFormInput) {
         let createFormUsecase = new CreateFormUsecase(this.formFirebaseProvider)
 
-        return await createFormUsecase.execute(data)
+        return createFormUsecase.execute(data)
     }
 } 

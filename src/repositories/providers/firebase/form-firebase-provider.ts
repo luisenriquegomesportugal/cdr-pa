@@ -1,5 +1,5 @@
 import { DatabaseReference, push, ref, get, child } from "firebase/database"
-import { connect } from "../../../configs/firebase"
+import { connectDatabase } from "../../../configs/firebase"
 import { CreateFormInput } from "../../../dtos/inputs/create-form-input"
 import { FormModel } from "../../../dtos/models/form-model"
 import { ID } from "../../../types/id-type"
@@ -9,7 +9,7 @@ export class FormFirebaseProvider implements FormRepository {
     private formDatabaseReference: DatabaseReference
 
     constructor() {
-        let database = connect()
+        let database = connectDatabase()
         this.formDatabaseReference = ref(database, 'forms')
     }
 

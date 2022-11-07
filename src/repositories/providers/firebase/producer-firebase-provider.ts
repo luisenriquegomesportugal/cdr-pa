@@ -1,5 +1,5 @@
 import { Database, DatabaseReference, equalTo, get, orderByChild, push, query, ref, serverTimestamp, update } from "firebase/database"
-import { connect } from "../../../configs/firebase"
+import { connectDatabase } from "../../../configs/firebase"
 import { AwnserFormInput } from "../../../dtos/inputs/awnser-form-input"
 import { CreateProducerInput } from "../../../dtos/inputs/create-producer-input"
 import { ListProducerInput } from "../../../dtos/inputs/list-producer-input"
@@ -12,12 +12,12 @@ export class ProducerFirebaseProvider implements ProducerRepository {
     private producersRef: DatabaseReference
 
     constructor() {
-        this.database = connect()
+        this.database = connectDatabase()
         this.producersRef = ref(this.database, 'producers')
     }
 
     async list(data: ListProducerInput): Promise<ProducerModel[]> {
-        let producerQuery = await query(this.producersRef,
+        let producerQuery = query(this.producersRef,
             orderByChild('userId'),
             equalTo(data.userId))
 
@@ -40,14 +40,8 @@ export class ProducerFirebaseProvider implements ProducerRepository {
 
     async awnser({ producerId, awnsers, formId }: AwnserFormInput): Promise<Boolean> {
         let databaseRef = ref(this.database)
-        let paths = {
-            [`/${this.producersRef.key}/${producerId}/formsAwnsered/${formId}`]: awnsers,
-            [`/${this.producersRef.key}/${producerId}`]: {
-                updatedAt: serverTimestamp()
-            }
-        }
 
-        await update(databaseRef, paths)
+        await update(databaseRef, {[`/${this.producersRef.key}/${producerId}/awnseredForms/${formId}`]: awnsers})
         return true
     }
 }

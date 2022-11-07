@@ -18,13 +18,13 @@ export class PolesResolver {
     async listPole(): Promise<PoleModel[]> {
         let listPoleUsecase = new ListPoleUsecase(this.poleFirebaseProvider)
 
-        return await listPoleUsecase.execute()
+        return listPoleUsecase.execute()
     }
 
     @Mutation(() => ID)
     async createPole(@Arg("data") data: CreatePoleInput) {
         let createPoleUsecase = new CreatePoleUsecase(this.poleFirebaseProvider)
 
-        return await createPoleUsecase.execute(data)
+        return createPoleUsecase.execute(data)
     }
 } 

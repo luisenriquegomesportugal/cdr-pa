@@ -11,7 +11,7 @@ export class ProducerModel extends Model {
     description?: string
 
     @Field(() => ObjectScalar, {nullable: true})
-    formsAwnsered?: object
+    awnseredForms?: object
 
     poleId: string
     chainId: string

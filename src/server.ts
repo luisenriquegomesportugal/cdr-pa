@@ -11,7 +11,7 @@ async function bootstrap() {
     const schema = await buildSchema({ resolvers })
 
     const server = new ApolloServer({ schema })
-    const { url } = await server.listen()
+    const { url } = await server.listen({port: process.env.PORT || 4000})
 
     console.log(`Running on ${url}`)
 }
